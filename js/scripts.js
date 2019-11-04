@@ -6,9 +6,9 @@ function ToDoList() {
 
 
 
-ToDoList.prototype.addToDoItem = function(newListItem) {
-  newListItem.id = this.assignId();
-  this.toDoList.push(newListItem);
+ToDoList.prototype.addToDoItem = function(newTaskObject) {
+  newTaskObject.id = this.assignId();
+  this.toDoItems.push(newTaskObject);
 }
 
 
@@ -27,13 +27,10 @@ function TaskObject(task, person) {
 
 }
 
-
+var toDoList = new ToDoList();
+// console.log(toDoList);
 
     $(document).ready(function() {
-      var toDoList = new ToDoList();
-
-
-
 
 
       $("form#userFormInput").submit(function(event) {
@@ -43,10 +40,10 @@ function TaskObject(task, person) {
         var task = $("input#userInput").val();
         var person = $("input#personInput").val();
 
-        var newListItem = new TaskObject(task, person);
+        var newTaskObject = new TaskObject(task, person);
 
 
-        toDoList.addToDoItem(newListItem);
+        toDoList.addToDoItem(newTaskObject);
         console.log(toDoList);
 
 
